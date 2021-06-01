@@ -8,28 +8,64 @@
 #
 
 library(shiny)
+library(shinythemes)
+library(shinydashboard)
 
+cat("---working dir:" , getwd(), "/n")
+print(list.files())
 
 shinyUI(fluidPage(
 
+  
    
-    titlePanel("Emissions data Across Different Countries"),
+    navbarPage("Emissions Anaylisis", theme = shinytheme("flatly"),
+               tabPanel("Emissions Rate by Country",
+                        sidebarLayout(
+                          sidebarPanel(
+                            radioButtons("Etype", label = ("Emission Type"),
+                                         choices = list("CO2" = "Emissions.Type.CO2", "N2O" = "Emissions.Type.N2O", "CH4" = "Emissions.Type.CH4"), 
+                                         selected = "Emissions.Type.CO2"),
+                            selectInput("Country", label = ("Select Country"), 
+                                        choices = unique(data$Country)),
+                            selected = "Afghanistan"),
+                          mainPanel(
+                            plotOutput("linegraph1")
+                            
+                            
+                          )
+                        )
+                      ),
+               tabPanel("Emissions Ratio Per GDP",
+                        sidebarLayout(
+                          sidebarPanel(
+                            selectInput("Country1", label = ("Select Country"), 
+                                        choices = unique(data$Country))
+                            
+                          ),
+                          mainPanel(
+                            plotOutput("linegraph2")
+                          )
+                        )),
+               tabPanel("Sector Emissions",
+                        sidebarLayout(
+                          sidebarPanel(
+                            radioButtons("Sector", label = ("Select Industry Sector"), 
+                                        choices = list("Power" = "Emissions.Sector.Power.Industry", "Buildings" = "Emissions.Sector.Buildings", "Transport" = "Emissions.Sector.Transport",
+                                                       "Other Sectors" = "Emissions.Sector.Other.Industry"),
+                                        selected = "Emissions.Sector.Power.Industry")
+                            
+                          ),
+                          mainPanel(
+                            plotOutput("bargraph")
+                          )
+                        )
+                        )
+               
+               )
+    
 
   
-    sidebarLayout(
-        sidebarPanel(
-            radioButtons("E-type", label = ("Emission Type"),
-                         choices = list("CO2" = "Emissions.Type.CO2", "N2O" = "Emissions.Type.N2O", "CH4" = "Emissions.Type.CH4"), 
-                         selected = "CO2"),
-            selectInput("state", label = ("Select State"), 
-                        choices = list("Afghanistan" = "Afghanistan", "Albania" = "Albania", "Algeria" = "Algeria", "Andorra" = "Andorra", "Angola" = "Angola", "Anguilla" = "Anguilla", "Antigua and Barbuda" = "Antigua and Barbuda", "Argentina" = "Argentina", "Armenia" = "Armenia", "Australia" = "Australia", "Austria" = "Austria", "Azerbaijan" = "Azerbaijan", "Bahamas" = "Bahamas",
-                                       "Bahrain" = "Bahrain", "Bangladesh" = "Bangladesh", "Barbados" = "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bosnia and Herzegovina", "Botswana", "Brazil", 
-                        selected = "AL"),
-        ),
 
-        
-        mainPanel(
-            plotOutput("distPlot")
-        )
+    
     )
-))
+)
