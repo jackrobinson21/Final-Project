@@ -8,19 +8,22 @@
 #
 
 library(shiny)
+library(dplyr)
+library(tidyverse)
+data <- read.csv("./Emissions-final/data/emissions.csv")
 
-# Define server logic required to draw a histogram
+countryEm <- reactive ({
+    data %>% 
+        
+})
+
+
+
 shinyServer(function(input, output) {
 
-    output$distPlot <- renderPlot({
+    output$countryPlot <- renderPlot({
 
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
-
+   
     })
 
 })

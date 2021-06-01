@@ -9,23 +9,25 @@
 
 library(shiny)
 
-# Define UI for application that draws a histogram
+
 shinyUI(fluidPage(
 
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
+   
+    titlePanel("Emissions data Across Different Countries"),
 
-    # Sidebar with a slider input for number of bins
+  
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
+            radioButtons("E-type", label = ("Emission Type"),
+                         choices = list("CO2" = "Emissions.Type.CO2", "N2O" = "Emissions.Type.N2O", "CH4" = "Emissions.Type.CH4"), 
+                         selected = "CO2"),
+            selectInput("state", label = ("Select State"), 
+                        choices = list("Afghanistan" = "Afghanistan", "Albania" = "Albania", "Algeria" = "Algeria", "Andorra" = "Andorra", "Angola" = "Angola", "Anguilla" = "Anguilla", "Antigua and Barbuda" = "Antigua and Barbuda", "Argentina" = "Argentina", "Armenia" = "Armenia", "Australia" = "Australia", "Austria" = "Austria", "Azerbaijan" = "Azerbaijan", "Bahamas" = "Bahamas",
+                                       "Bahrain" = "Bahrain", "Bangladesh" = "Bangladesh", "Barbados" = "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bosnia and Herzegovina", "Botswana", "Brazil", 
+                        selected = "AL"),
         ),
 
-        # Show a plot of the generated distribution
+        
         mainPanel(
             plotOutput("distPlot")
         )
