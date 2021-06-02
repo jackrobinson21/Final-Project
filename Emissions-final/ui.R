@@ -18,7 +18,7 @@ shinyUI(fluidPage(
 
   
    
-    navbarPage("Emissions Anaylisis", theme = shinytheme("flatly"),
+    navbarPage("Emissions Anaylisis", theme = shinytheme("superhero"),
                tabPanel("Emissions Rate by Country",
                         sidebarLayout(
                           sidebarPanel(
@@ -59,8 +59,29 @@ shinyUI(fluidPage(
                             plotOutput("bargraph")
                           )
                         )
+                        ),
+               navbarMenu("About Us :)",
+               tabPanel("David Ocshner",
+                        mainPanel(
+                          h1("Hi I'm Shmave"),
+                          p("Hi, I'm a sophomore at UW. I am currently in the Foster School of Business but I am looking to minor in data anaylsis. ")
+                        )),
+               tabPanel("Benjamin ∆",
+               mainPanel(
+                 h1("Hi I'm Benjmain ∆"),
+                 p("I am a local seattlelite and have lived here all my life. I am a sophomore at UW and am looking to major in Human Center Interaction.")
+                 
+              
+               )),
+               tabPanel("Jack",
+                        mainPanel(
+                          h1("Hi I'm Jack Robbo"),
+                          p("I am the king of pussy, I like that shit raw baby yeaaahhhh austin powers style baby yeahhhhhh")
                         )
+                        )
+            
                
+               )
                )
     
 
