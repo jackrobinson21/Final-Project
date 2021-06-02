@@ -72,19 +72,27 @@ shinyServer(function(input, output){
     })
   
     emSector <- reactive({
-      data %>% 
-        filter(Year == "2012") %>% 
+        
         if(input$Sector == "Emissions.Sector.Power.Industry"){
-          filter(Country %in% top15power)
+          data %>% 
+            filter(Year == "2012") %>% 
+            filter(Country %in% top15power)
         }
       else if(input$Sector == "Emissions.Sector.Buildings"){
+        data %>% 
+          filter(Year == "2012") %>% 
         filter(Country %in% top15Building)
+        
       }
       else if(input$Sector == "Emissions.Sector.Transport"){
-        filter(Country %in% top15Transport)
+        data %>% 
+          filter(Year == "2012", Country %in% top15Transport)
+        
       }
       else {
-        filter(Country %in% top15Other)
+        data %>% 
+          filter(Year == "2012") %>% 
+         filter(Country %in% top15Other)
       }
         
     })
