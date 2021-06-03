@@ -67,7 +67,7 @@ shinyServer(function(input, output){
     }
     else {
       ggplot(emCountry(), aes(x = Year, y = Emissions.Type.CH4))+
-        geom_line()+h
+        geom_line()+
         ggtitle(paste("Emissions rate for", input$Country))+
         theme(plot.title = element_text(size = 27, face = "bold"))+
         theme(axis.text = element_text(size = 14), axis.title = element_text(size = 16))
