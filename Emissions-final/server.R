@@ -14,9 +14,6 @@ library(thematic)
 data <- read.csv("./data/emissions.csv")
 
 
-datasearch <- length(unique(data$Country))
-
-
 thematic_shiny(font = "auto")
 
 shinyServer(function(input, output){
@@ -26,6 +23,15 @@ shinyServer(function(input, output){
     
   })
   
+  output$country2 <- renderUI({
+    selectInput("Country", label = ("Select Country"), 
+                choices = unique(data$Country), selected = "United States")
+  })
+  
+  output$country3 <- renderUI({
+    selectInput("Country1", label = ("Select Country"), 
+                choices = unique(data$Country), selected = "United States")
+  })
   top15power <- (data %>% 
     select(Country, Year, Emissions.Sector.Power.Industry) %>% 
     filter(Year == "2012") %>% 
@@ -100,7 +106,8 @@ shinyServer(function(input, output){
       }
       else if(input$Sector == "Emissions.Sector.Transport"){
         data %>% 
-          filter(Year == "2012", Country %in% top15Transport)
+          filter(Year == "2012") %>% 
+        filter(Country %in% top15Transport)
         
       }
       else {
