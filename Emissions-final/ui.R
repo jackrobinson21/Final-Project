@@ -108,7 +108,7 @@ shinyUI(fluidPage(
                tabPanel("Benjamin ∆",
                mainPanel(
                  h1("Hi I'm Benjmain ∆"),
-                 p("I am a local seattlelite and have lived here all my life. I am a sophomore at UW and am looking to major in Human Center Interaction.")
+                 p("I am a local seattlelite and have lived here all my life. I am a sophomore at UW and am looking to major in Human Computer Interaction.")
                  
               
                )),
