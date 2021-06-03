@@ -10,15 +10,32 @@
 library(shiny)
 library(shinythemes)
 library(shinydashboard)
+library(thematic)
 
 cat("---working dir:" , getwd(), "/n")
 print(list.files())
+
+thematic_shiny(font = "auto")
 
 shinyUI(fluidPage(
 
   
    
-    navbarPage("Emissions Anaylisis", theme = shinytheme("superhero"),
+    navbarPage("Emissions Analysis", theme = shinytheme("superhero"),
+               tabPanel("Project Overview",
+                        h1("Three Major Questions:", align="center"),
+                        h4("1. How have CO2, N2O, and CH4 emissions changed per country?", align="center"),
+                        h4("2. What is the relationship between the amount of emissions and the economic status of the country?", align="center"),
+                        h4("3. Which sectors of business contribute the most emissions amongst all the countries?", align="center"),
+                        p("The purpose of your project is to depict and inform the user of the levels of emissions pertaining to specific countries.
+                          Emissions are one of the primary factors contributing to climates change, so it is important that the users learn of the harmful effects certain countries 
+                          are permitting."),
+                        p("The source of our data comes from the CORGIS Dataset Project 
+                          Along with the levels of emissions per country, the user can also see the relationships between emissions and business sectors, as well as the Ratio of Emissions 
+                          per GDP. Reviewing all of these factors pertaining to emisisons allows the user to get a accurate glimpse of the most contributable countries of emissions."),
+                        h5("Source:"),
+                        a("https://corgis-edu.github.io/corgis/csv/emissions/")
+    ),
                tabPanel("Emissions Rate by Country",
                         sidebarLayout(
                           sidebarPanel(
@@ -30,6 +47,7 @@ shinyUI(fluidPage(
                             selected = "Afghanistan"),
                           mainPanel(
                             plotOutput("linegraph1")
+                            
                             
                             
                           )
@@ -60,6 +78,8 @@ shinyUI(fluidPage(
                           )
                         )
                         ),
+              tabPanel("Conclusion"
+                       ),
                navbarMenu("About Us :)",
                tabPanel("David Ocshner",
                         mainPanel(
@@ -78,7 +98,11 @@ shinyUI(fluidPage(
                           h1("Hi I'm Jack Robbo"),
                           p("I am the king of pussy, I like that shit raw baby yeaaahhhh austin powers style baby yeahhhhhh")
                         )
-                        )
+                        ),
+               tabPanel("Theo",
+                        mainPanel(
+                          h1("Hi I'm Theo Covich")
+                        ))
             
                
                )
