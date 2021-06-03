@@ -74,12 +74,20 @@ shinyUI(fluidPage(
                             
                           ),
                           mainPanel(
-                            plotOutput("bargraph")
+                            plotOutput("bargraph"),
+                            p("")
                           )
                         )
                         ),
-              tabPanel("Conclusion"
-                       ),
+              tabPanel("Conclusion",
+                      h1("Conclusion"),
+                      p("The top country that produces the most emissions is the United States. The United States has an exponentially higher amount of pollutants being released over time than all of the other countries. We observed that as GDP increases in the United States emission rates decline as the country becomes advanced and most likely outsources emission heavy activities.
+                      This can be seen in the Emissions Ratio per GDP graph as the United States uses the most initial emissions per a $1000 of GDP. As time goes on they slowly reduce their emissions ratio as they have moved on to outsourcing their production.
+                      The impact this is going to have on Global Warming is very extreme. As the United States searches for other countries to produce their goods the countries are forced to use the cheapest energy source which will pollute more and then the cycle will continue as those countries expand.
+                      The data we are using is most likely accurate as it came from the European Commission's, EDGAR. EDGAR stands for the Emissions Database for Global Atmoshperic Research. This data is credible, however, it does not include any data from after 2012 and is not up to date. This data is unbiased, however certain countries may go to lengths to hide some of their data and recordings must be made as educated observations.
+                      Based on the fact that this data is not collected in certain places and must be observed will affect the population of the earth as a whole as global warming moves faster than scientists think.
+                      We would do three things to advance the project in the future. First, we would have collected more recent data. Second, we would have added all sectors of industry into one bargraph. Third, we would have used a better theme on the graphs.")
+                      ),
                navbarMenu("About Us :)",
                tabPanel("David Ocshner",
                         mainPanel(

@@ -81,7 +81,7 @@ shinyServer(function(input, output){
     output$linegraph2 <- renderPlot({
       ggplot(emCountry1(), aes(x = Year, y = Ratio.Per.GDP))+
         geom_line()+
-        ggtitle(paste("Emissions ratio for", input$Country))+
+        ggtitle(paste("Emissions ratio for", input$Country1))+
         theme(plot.title = element_text(size = 27, face = "bold"))+
         theme(axis.text = element_text(size = 14), axis.title = element_text(size = 16))
     })
